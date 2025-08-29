@@ -1,0 +1,79 @@
+
+import java.awt.*;
+
+import javax.swing.*;
+import java.awt.event.*;
+;
+
+public class rules extends JFrame implements ActionListener {
+    String name;
+    JButton start,back;
+    rules(String name){
+        this.name=name;
+        getContentPane().setBackground(Color.WHITE);
+        setLayout(null);
+
+        JLabel heading = new JLabel("Welcome " +name+ "In Simple Mind:");
+        heading.setBounds(30, 50, 700, 30);
+        heading.setFont(new Font("", Font.BOLD, 20));
+
+        heading.setForeground(new Color(14, 57, 55));
+        add(heading);
+    
+         JLabel rules = new JLabel("");
+        rules.setBounds(20, 90, 700, 350);
+        rules.setFont(new Font("", Font.PLAIN, 25));
+        rules.setText(
+            "<html>"
+    + "1.Each quiz consists of a fixed number of questions.<br>"
+    + "2.There is a set time limit for each quiz or for each question.<br>"
+    + "3.Each correct answer earns points.<br>"
+    + "4.Incorrect answers may earn no points or could deduct points.<br>"
+    + "5.Answers must be submitted before the timer runs out.<br>"
+    + "6.No use of external help or resources is allowed.<br>"
+    + "7.Results will be announced after all entries are collected."
+    + "</html>"
+        );
+        rules.setForeground(new Color(14, 57, 55));
+        add(rules);
+        //start button
+         start=new JButton("start");
+        start.setBounds(450,500,100,30);
+        start.setBackground(new Color(90,14,254));
+        start.setForeground(Color.WHITE) ;
+        start.addActionListener(this);
+        add(start);
+//back button
+        back=new JButton("Back");
+        back.setBounds(250,500,100,30);
+        back.setBackground(new Color(90,14,254));
+        back.setForeground(Color.WHITE) ;
+        back.addActionListener(this);
+        add(back);
+          
+        
+    
+setSize(800,650);
+
+setLocation(300,50);
+setVisible(true);
+    }
+
+    public static void main(String[] args){
+     new rules("user");
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent en) {
+        if(en.getSource()==start){
+            setVisible(false);
+            new quiz();
+        }
+        else if(en.getSource()==back){
+        setVisible(false);
+        new login();
+        }
+        // TODO Auto-generated method stub
+        
+    }
+}
